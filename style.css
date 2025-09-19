@@ -1,0 +1,38 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+#map {
+    height: 78vh;
+}
+
+#controls {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+select,
+input,
+button {
+    padding: 6px 8px;
+    font-size: 14px;
+}
+
+#log {
+    height: 18vh;
+    overflow: auto;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+    background: #fafafa;
+    font-size: 13px;
+}
+
+.small {
+    font-size: 12px;
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Shortest Path Visualiser — OSM + DSA Algorithms</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="controls">
+        <label class="small">Radius (km): <input id="radius" type="number" value="1" min="0.2" step="0.2"></label>
+        <button id="loadGraph">Load graph around map center</button>
+        <label class="small">Algorithm:
+      <select id="algorithm">
+        <option value="dijkstra">Dijkstra</option>
+        <option value="astar">A* (Euclidean)</option>
+        <option value="bellmanford">Bellman-Ford</option>
+      </select>
+    </label>
+        <button id="setStart">Set Start (click map)</button>
+        <button id="setEnd">Set End (click map)</button>
+        <button id="findPath">Find Path</button>
+        <button id="clear">Clear</button>
+        <div style="margin-left:auto; font-size:13px; color:#555">
+            Click 'Load graph' to fetch OSM road network. Then set start/end.
+        </div>
+    </div>
+    <div id="map"></div>
+    <div id="log"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="utils.js"></script>
+    <script src="graph.js"></script>
+    <script src="algorithms.js"></script>
+    <script src="map.js"></script>
+    <script src="ui.js"></script>
+</body>
+
+</html>
