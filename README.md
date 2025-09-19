@@ -1,62 +1,80 @@
-Shortest Path Visualiser
-A web-based tool for visualising shortest path algorithms on real-world road network data from OpenStreetMap (OSM). This project uses vanilla JavaScript and the Leaflet.js library for an interactive map interface.
+🚦 Shortest Path Visualiser
 
-🌟 Features
-OSM Data Integration: Fetches real road network data ('highways') using the Overpass API based on the current map view and a specified radius.
+A web-based tool to visualise shortest path algorithms on real-world road networks using OpenStreetMap (OSM) data.
+Built with vanilla JavaScript and Leaflet.js for an interactive map interface.
 
-Graph Representation: Converts the raw OSM data into a standard graph data structure (nodes and adjacency lists) for algorithm processing.
+✨ Features
 
-Multiple Algorithms: Includes implementations of three classic shortest path algorithms:
+🌍 OSM Data Integration
 
-Dijkstra's Algorithm: Guarantees the shortest path on a graph with non-negative edge weights.
+Fetches live road network data (highways) from Overpass API based on current map view and radius.
 
-A Search*: An informed search algorithm that uses a Euclidean distance heuristic to find the shortest path more efficiently than Dijkstra's in most cases.
+🔗 Graph Representation
 
-Bellman-Ford Algorithm: Handles graphs with negative edge weights, though it's typically slower than Dijkstra's and A* for non-negative weights.
+Converts raw OSM data into a graph structure (nodes + adjacency lists).
 
-Interactive Interface:
+🧮 Multiple Algorithms
 
-Click the map to set start and end points. The tool automatically finds the nearest road network node to your selected points.
+Dijkstra’s Algorithm → Finds guaranteed shortest path (non-negative edges).
 
-Visualises the calculated path on the map.
+A* → Faster than Dijkstra’s, guided by Euclidean distance heuristic.
 
-Displays performance metrics like execution time and path distance in a log.
+Bellman-Ford → Handles negative edges (slower, mainly for demonstration).
 
-Clear and Simple Code: The entire application is contained within a single HTML file, making it easy to understand and modify. No complex build tools or frameworks are required.
+🖱️ Interactive Map Interface
+
+Click on the map to set Start and End points.
+
+Automatically snaps to the nearest road node.
+
+Visualises the calculated path with distance and time metrics.
+
+💻 Simple Codebase
+
+Entire app in one HTML file – easy to read, modify, and extend.
+
+No complex build tools or frameworks required.
 
 🚀 How to Use
-Clone the Repository:
 
-Bash
+Clone the Repository
 
 git clone https://github.com/shivam02345/shortest_path.git
 cd shortest_path
-Open in Browser: Simply open the index.html file in your preferred web browser (e.g., Chrome, Firefox).
 
-Find a Path:
 
-Navigate the Map: Pan and zoom to an area of interest.
+Open in Browser
 
-Load the Graph: Click the "Load graph around map center" button. You can adjust the radius (in kilometers) to fetch more or less data. The application will log its progress.
+Just open index.html in Chrome, Firefox, or your browser of choice.
 
-Set Start and End Points: Click the "Set Start" button, then click on the map to place a marker. Do the same for the "Set End" button.
+Find a Path
 
-Find the Path: Select an algorithm from the dropdown and click "Find Path". The calculated route will be drawn on the map, and a summary of the result will appear in the log.
+🗺️ Pan & zoom to your area of interest.
+
+📥 Click "Load graph around map center" → fetches roads from OSM.
+
+📍 Set Start and End points by clicking on the map.
+
+⚡ Choose an algorithm from the dropdown and click "Find Path".
+
+✅ Path will be drawn on the map with a summary in the log panel.
 
 🛠️ Implementation Details
-Graph Model: The Graph class stores nodes (unique OSM IDs with latitude/longitude) and an adjacency list.
 
-Edge Weights: Edge weights are calculated using the haversine formula to determine the real-world distance (in meters) between two geographical points.
+Graph Model → Nodes = OSM IDs with coordinates; stored in adjacency lists.
 
-Priority Queue: A simple MinHeap class is implemented from scratch to provide an efficient priority queue for the Dijkstra and A* algorithms.
+Edge Weights → Real-world distances (meters), calculated using the Haversine formula.
 
-Overpass API: The tool sends a POST request to the Overpass API, which queries for all 'way' elements with a 'highway' tag within the specified bounding box.
+Priority Queue → Custom MinHeap for Dijkstra’s & A*.
 
-UI/Map: The interface is built with basic HTML and CSS, and the mapping functionality is handled entirely by the Leaflet.js library.
+Overpass API → Queries all highway elements within the bounding box.
+
+UI & Map → Built with HTML + CSS + Leaflet.js for map rendering.
 
 📜 Algorithms in Detail
-Dijkstra: A classic single-source shortest path algorithm that explores nodes in increasing order of distance from the source. It is guaranteed to find the shortest path on a graph with non-negative edge weights.
 
-*A (A-Star)**: An extension of Dijkstra's that uses a heuristic function (in this case, Euclidean distance) to guide its search towards the target. This typically makes it faster by exploring fewer nodes.
+🔹 Dijkstra → Expands nodes in increasing distance order. Always finds the shortest path.
 
-Bellman-Ford: This algorithm can handle graphs with negative edge weights, which Dijkstra's cannot. However, for a road network (where edge weights are distances and are always positive), it is significantly less efficient. It is included for demonstration purposes.
+🔹 A* → Optimised Dijkstra with heuristic (Euclidean distance). Faster in practice.
+
+🔹 Bellman-Ford → Supports negative edges but slower; included for completeness.
